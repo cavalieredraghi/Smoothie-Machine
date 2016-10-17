@@ -15,21 +15,27 @@ public class Shoppe {
 		final Collection<SimpleRecipe> recipes = readRecipes.loadRecipes("recipes.csv");
 
 		Scanner input = new Scanner(System.in);
-		int option = 0;
+		String option;
 		System.out.println("Welcome to Smooth Moves: What Smoothie would you like to day?\n");
-		while (option != -1) {
+		while (true) {
 
-			System.out.println("Please select from the list of options: \n" + "1) Make an Order\n" + "2) Try your own\n"
-					+ "3) list of orginal recipes\n" + "-1) to exit.");
+			System.out.println("Please select from the list of options: \n" + "1) Add items\n" + "2) check out\n"
+					+ "3) list of orginal recipes\n" + "x) to exit.");
 			System.out.print("> ");
-			option = input.nextInt();
-			if (option == 1) {
+			option= input.nextLine();
+			if (option.equals(1)) {
+				System.out.println("1)Banana Smoothie\n"
+						+ "2)Bananberry Classic\n"
+						+ "3)Pineapple Smoothie\n"
+						+ "4)Tropical Fusion\n"
+						+ "5)Indiana Special \n"
+						+ "6)Green Soup");
 
 			}
-			if (option == 2) {
-				
+			if (option.equals(2)) {
+
 			}
-			if (option == 3) {
+			if (option.equals(3)) {
 				for (SimpleRecipe recipe : recipes) {
 					System.out.println(recipe.getName());
 					System.out.println(recipe.getIngredients());
@@ -39,9 +45,13 @@ public class Shoppe {
 						e.printStackTrace();
 					}
 				}
+			}
+			if (option.equalsIgnoreCase("X")) {
+				break;
 
 			}
 		}
+
 	}
 
 	public Collection<SimpleRecipe> loadRecipes(String filename) {
