@@ -1,0 +1,25 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+
+mainClassName = "day2.fruitsSuperclass"
+
+jar {
+    baseName = 'java202'
+    version =  '0.1.6'
+}
+
+eclipse {
+    project.natures 'org.eclipse.buildship.core.gradleprojectnature'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+run {
+   standardInput = System.in
+}
