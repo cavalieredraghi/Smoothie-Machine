@@ -9,14 +9,22 @@ public class ShoppingCart {
 	String option;
 	private Collection<ShoppingCart> cart = new ArrayList();
 
-	public Collection addProduct() {
-		
-		System.out.println("1)Banana Smoothie\n" + "2)Bananberry Classic\n" + "3)Pineapple Smoothie\n"
-				+ "4)Tropical Fusion\n" + "5)Indiana Special \n" + "6)Green Soup");
-		System.out.print("> ");
-		option=input.nextLine();
-		if (option.equals("1")){
-			
+	public void addProduct() {
+		while (true) {
+			System.out.println("1)Banana Smoothie\n" + "2)Bananberry Classic\n" + "3)Pineapple Smoothie\n"
+					+ "4)Tropical Fusion\n" + "5)Indiana Special \n" + "6)Green Soup");
+			System.out.print("> ");
+			// may need a loop while loop most likely best.
+			// try nesting these ifs into a Switch
+			option = input.nextLine();
+			switch (option) {
+			case "1":
+			}
 		}
+
+	}
+
+	public void cartLocation() {
+		
 	}
 }

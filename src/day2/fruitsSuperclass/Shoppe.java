@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Scanner;
@@ -24,15 +25,16 @@ public class Shoppe {
 			System.out.print("> ");
 			option = input.nextLine();
 			if (option.equals("1")) {
-				
+
 			}
 			if (option.equals("2")) {
-				
+
 			}
 			if (option.equals("3")) {
 				for (SimpleRecipe recipe : recipes) {
 					System.out.println(recipe.getName());
 					System.out.println(recipe.getIngredients());
+					System.out.println(recipe.getPrice());
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {
@@ -71,12 +73,17 @@ public class Shoppe {
 	public SimpleRecipe buildRecipe(String[] items) {
 		SimpleRecipe recipe = new SimpleRecipe();
 		recipe.setName(items[0]);
-
+		
 		Collection<String> ingredients = new ArrayList<>();
-		for (int i = 1; i < items.length; i++) {
+		for (int i = 2; i < items.length; i++) {
 			ingredients.add(items[i]);
 		}
 		recipe.setIngredients(ingredients);
+		return recipe;
+	}
+	public SimpleRecipe priceRecipe(BigDecimal [] items){
+		SimpleRecipe recipe = new SimpleRecipe();
+		recipe.setPrice(items[1]);
 		return recipe;
 	}
 }
