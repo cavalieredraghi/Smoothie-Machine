@@ -12,8 +12,10 @@ import java.util.Scanner;
 public class Shoppe {
 	public static void main(String[] args) {
 		ReadRecipes readRecipes = new ReadRecipes();
-
+		// add a second file for the price of the products allow it to be read and inable it to be before the ingredients
 		final Collection<SimpleRecipe> recipes = readRecipes.loadRecipes("recipes.csv");
+		final Collection<SimpleRecipe> prices = readRecipes.loadRecipes("RecipePrice.csv");
+		 
 
 		Scanner input = new Scanner(System.in);
 		String option;
@@ -31,10 +33,14 @@ public class Shoppe {
 
 			}
 			if (option.equals("3")) {
+				for (SimpleRecipe price:prices){
+					System.out.println(price.getName());
+					System.out.println("Price: " + price.getIngredients());
+				}
 				for (SimpleRecipe recipe : recipes) {
-					System.out.println(recipe.getName());
-					System.out.println(recipe.getIngredients());
-					System.out.println(recipe.getPrice());
+					
+					System.out.println("Ingredients: " + recipe.getIngredients());
+					
 					try {
 						Thread.sleep(2000);
 					} catch (InterruptedException e) {
