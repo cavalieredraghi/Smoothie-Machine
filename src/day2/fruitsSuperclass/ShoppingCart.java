@@ -7,24 +7,27 @@ import java.util.Scanner;
 public class ShoppingCart {
 	Scanner input = new Scanner(System.in);
 	String option;
+	ReadRecipes readRecipes = new ReadRecipes();
 	private Collection<ShoppingCart> cart = new ArrayList();
-
+	final Collection<SimpleRecipe> prices = readRecipes.loadRecipes("RecipePrice.csv");
+	
 	public void addProduct() {
 		while (true) {
-			System.out.println("1)Banana Smoothie\n" + "2)Bananberry Classic\n" + "3)Pineapple Smoothie\n"
-					+ "4)Tropical Fusion\n" + "5)Indiana Special \n" + "6)Green Soup");
+			System.out.println("Which Smoothie would you like to purchase?");
 			System.out.print("> ");
-			// may need a loop while loop most likely best.
-			// try nesting these ifs into a Switch
+			// may need a loop while loop most likely best for loop then add in 
+			//if coditionals you will need 3 for loops all linked to one another 
+			//through user input.
+			while(true){
 			option = input.nextLine();
-			switch (option) {
-			case "1":
+			 for(i=1; 1>)
 			}
 		}
 
 	}
 
 	public void cartLocation() {
+		
 		
 	}
 }
