@@ -15,8 +15,8 @@ public class ShoppingCart {
 		while (true) {
 			System.out.println("Which Smoothie would you like to purchase?");
 			System.out.print("> ");
-			// may need a loop while loop most likely best for loop then add in 
-			//if coditionals you will need 3 for loops all linked to one another 
+			// may need a loop while loop most likely best foreach loop then add in 
+			//if coditionals you will need 3 foreach loops all linked to one another 
 			//through user input.
 			while(true){
 			option = input.nextLine();
