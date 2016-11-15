@@ -1,9 +1,11 @@
 package day2.fruitsSuperclass;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
@@ -25,26 +27,25 @@ public class Shoppe {
 		System.out.println("Welcome to Smooth Moves: What Smoothie would you like to day?\n");
 		while (true) {
 
-			System.out.println("Please select from the list of options: \n" + "1) create custom smoothie\n"
-					+ "2) recipe prices\n" + "3) recipes ingredients list\n" + "x) to exit.");
+			System.out.println(
+					"Please select from the list of options: \n" + "1) create custom smoothie\n" + "2) recipe prices\n"
+							+ "3) recipes ingredients list\n" + "4) view custom smoothie names \n" + "x) to exit.");
 			System.out.print("> ");
 			option = input.nextLine();
-			
+
 			if (option.equals("1")) {
-				for (SimpleRecipe Ingredient : ingredients) {
-				System.out.println(Ingredient.getName()+": Price: " + Ingredient.getIngredients());
-				}
-				File dir = new File ("/user/bigge/workspace/Smoothie");
-				File file = new File ("custom_smoothie.cvs");
-				
+
+				File dir = new File("/user/bigge/workspace/Smoothie");
+				File file = new File("custom_smoothie.cvs");
+
 				FileOutputStream outFile = new FileOutputStream(file);
 				String s;
-				do{
+				do {
 					System.out.println("To escape just hit enter on a blank line.");
 					System.out.print("> ");
 					s = input.nextLine();
-				outFile.write(s.getBytes());
-				}while (!"".equals(s));
+					outFile.write(s.getBytes());
+				} while (!"".equals(s));
 			}
 			if (option.equals("2")) {
 				for (SimpleRecipe price : prices) {
@@ -58,13 +59,37 @@ public class Shoppe {
 					System.out.println(recipe.getIngredients());
 				}
 			}
+			if (option.equals("4")) {
+				File dir = new File("/user/bigge/workspace/Smoothie");
+				File file = new File("custom_smoothie.cvs");
+				String line = null;
+				try {
+					// FileReader reads text files in the default encoding.
+					FileReader fileReader = new FileReader(file);
+
+					// Always wrap FileReader in BufferedReader.
+					BufferedReader bufferedReader = new BufferedReader(fileReader);
+
+					while ((line = bufferedReader.readLine()) != null) {
+						System.out.println(line);
+					}
+
+					// Always close files.
+					bufferedReader.close();
+				} catch (FileNotFoundException ex) {
+					System.out.println("Unable to open file '" + file + "'");
+				} catch (IOException ex) {
+					System.out.println("Error reading file '" + file + "'");
+					// Or we could just do this:
+					// ex.printStackTrace();
+				}
+			}
 
 			if (option.equalsIgnoreCase("X")) {
 				break;
 
 			}
 		}
-
 	}
 
 	public Collection<SimpleRecipe> loadRecipes(String filename) {
